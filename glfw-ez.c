@@ -36,7 +36,6 @@
     #include "./glfw/src/win32_init.c"
     #include "./glfw/src/win32_joystick.c"
     #include "./glfw/src/win32_monitor.c"
-    #include "./glfw/src/win32_module.c"
     #include "./glfw/src/win32_time.c"
     #include "./glfw/src/win32_thread.c"
     #include "./glfw/src/win32_window.c"
