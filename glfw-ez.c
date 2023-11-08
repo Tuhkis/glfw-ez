@@ -46,6 +46,12 @@
 #endif
 
 #if (defined __linux__ || defined _linux || defined __linux)
+    #include <poll.h>
+    #ifndef ppoll
+    int ppoll(struct pollfd *fds, nfds_t nfds,
+        const struct timespec *_Nullable tmo_p,
+        const sigset_t *_Nullable sigmask);
+    #endif // ppoll
     #if defined(_GLFW_WAYLAND)
         #include "./glfw/src/wl_init.c"
         #include "./glfw/src/wl_monitor.c"
@@ -69,11 +75,16 @@
 #endif
 
 #if defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__) || defined(__DragonFly__)
+    #include <poll.h>
+    #ifndef ppoll
+    int ppoll(struct pollfd *fds, nfds_t nfds,
+          const struct timespec *_Nullable tmo_p,
+          const sigset_t *_Nullable sigmask);
+    #endif // ppoll
     #include "./glfw/src/x11_init.c"
     #include "./glfw/src/x11_monitor.c"
     #include "./glfw/src/x11_window.c"
     #include "./glfw/src/xkb_unicode.c"
-    // TODO: Joystick implementation
     #include "./glfw/src/null_joystick.c"
     #include "./glfw/src/posix_time.c"
     #include "./glfw/src/posix_thread.c"
